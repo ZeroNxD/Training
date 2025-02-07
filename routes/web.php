@@ -18,3 +18,4 @@ use App\Http\Controllers;
 Route::get('/', [Controllers\HomeController::class, 'ShowPage'])->name('Home');
 Route::get('/Create', [Controllers\HomeController::class, 'FormCreate'])->name('CreateForm');
 Route::post('/CreateUser', [Controllers\HomeController::class, 'AddNewUser'])->name('AddUser');
+Route::post('/update-status', [Controllers\HomeController::class, 'updateStatus']);

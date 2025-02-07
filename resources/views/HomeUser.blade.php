@@ -12,6 +12,14 @@
     <div class="container">
         <h1 style="font-weight: bold; margin-top: 20px;">User Management Table</h1>
     </div>
+
+    @if (session('success'))
+        <div class="alert alert-success" style="margin-top: 20px;">
+            {{ session('success') }}
+        </div>
+    @endif
+    
+    @if (!empty($allusers))
     <div class="container" style="text-align: right;"> 
         <button class="btn btn-primary" style="font-weight: bold; margin-top: 20px; margin-left: 30px; width: 150px;" onclick="window.location.href='{{ route('CreateForm')}}'">
             Add User
@@ -23,7 +31,6 @@
                 <th style="text-align: center;">Number</th>
                 <th style="text-align: center;">Name</th>
                 <th style="text-align: center;">Email</th>
-                <th style="text-align: center;">Created At</th>
                 <th style="text-align: center;">Status</th>
                 <th style="text-align: center;">Action</th>
             </thead>
@@ -34,7 +41,6 @@
                     <td style="text-align: center;">{{ $index + 1 }}</td>
                     <td style="text-align: center;">{{ $user->name }}</td>
                     <td style="text-align: center;">{{ $user->email }}</td>
-                    <td style="text-align: center;">{{ $user->created_at->format('d M Y') }}</td>
                     <td style="text-align: center;">
                         @if ($user->status == 'Success')
                             <span style="color: green">{{$user->status}}</span>
@@ -53,6 +59,9 @@
             </tbody>
         </table>
     </div>
+    @else
+        <p>No Data Avaiable</p>
+    @endif
     
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/2.2.1/js/dataTables.min.js"></script>
